@@ -2,3 +2,7 @@
 * Introduction
   This repo contains my notes and code examples about learning Emacs
   Lisp.
+
+  Some of it will be in Dutch
+* [[https://learnxinyminutes.com/docs/elisp/][Learn X in Y minutes where X = elisp]]
+* [[https://www.gnu.org/software/emacs/manual/eintr.html][An introduction to programming in Emacs Lisp]]
