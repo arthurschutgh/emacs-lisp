@@ -1,0 +1,41 @@
+#+TITLE: Notes about Learning X in Y minutes where X = elisp
+* Expressions, variables and functions
+** Expressions
+   Elisp programma's bestaan uit symbolic expressions. Afgekort:
+   sexp. Ze worden omgeven met haakjes: ( en ).
+   #+begin_src emacs-lisp :tangle yes
+     (+ 2 2)
+     (* (+ 3 2) 3)
+   #+end_src
+** Variables
+   Met setq kun je een variabele (een naam die wijst naar een blok
+   geheugen) een waarde geven.
+   #+begin_src emacs-lisp :tangle yes
+     (setq my-name "Arthur")
+   #+end_src
+** Functions
+   Emacs heeft ingebouwde functies zoals insert. Hiermee kun je een
+   string in een buffer plaatsen op de locatie van point (Emacs jargon
+   voor cursor).
+   #+begin_src emacs-lisp :tangle yes
+     (insert "Hello!")
+     ;; more than one argument
+     (insert "Hello" " world!")
+   #+end_src
+   Je kunt ook je eigen functies definiëren:
+   #+begin_src emacs-lisp :tangle yes
+     (defun hello () (insert "Hello, I am " my-name))
+   #+end_src
+   De zojuist gedefinieerde functie kun je uitvoeren door z'n naam
+   binnen haakjes te plaatsen.
+   #+begin_src emacs-lisp :tangle yes
+     (hello)
+   #+end_src
+   Een functie kun je argumenten meegeven.
+   #+begin_src emacs-lisp :tangle yes
+     (defun hello (name) (insert "Hello " name))
+   #+end_src
+   De functie kun je als volgt aanroepen:
+   #+begin_src emacs-lisp :tangle yes
+     (hello "you")
+   #+end_src
