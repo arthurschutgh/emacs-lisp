@@ -1,0 +1,4 @@
+#+TITLE: Learning Emacs Lisp
+* Introduction
+  This repo contains my notes and code examples about learning Emacs
+  Lisp.
