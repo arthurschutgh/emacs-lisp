@@ -39,3 +39,46 @@
    #+begin_src emacs-lisp :tangle yes
      (hello "you")
    #+end_src
+* Buffers, windows and functions
+  In Emacs buffers are displayed in windows. The thing handled by your
+  window manager is called a frame in Emacs jargon.
+** Buffers
+   Je kunt een nieuwe buffer met de naam =*test*= openen in een nieuw
+   window.
+   #+begin_src emacs-lisp :tangle yes
+     (switch-to-buffer-other-window "*test*")
+   #+end_src
+   Je kunt meerdere symbolic expressions combineren met "progn":
+   #+begin_src emacs-lisp :tangle yes
+     (progn (switch-to-buffer-other-window "*test*")
+	    (hello "you"))
+   #+end_src
+   Een buffer legen kan met =erase-buffer=:
+   #+begin_src emacs-lisp :tangle yes
+     (progn (switch-to-buffer-other-window "*test*")
+	    (erase-buffer)
+	    (hello "there"))
+   #+end_src
+   Terugkeren naar hetzelfde window is ook mogelijk:
+   #+begin_src emacs-lisp :tangle yes
+     (progn
+       (switch-to-buffer-other-window "*test*")
+       (erase-buffer)
+       (hello "you")
+       (other-window 1)
+       )
+   #+end_src
+** Let
+   Een lokale variabele kun je maken met een let binding.
+   #+begin_src emacs-lisp :tangle yes
+     (let ((local-name "you"))
+       (switch-to-buffer-other-window "*test*")
+       (erase-buffer)
+       (hello local-name)
+       (other-window 1))
+   #+end_src
+** String format
+   De opmaak van een string kun je bepalen met format:
+   #+begin_src emacs-lisp :tangle yes
+     (format "Hello %s!\n" "visitor")
+   #+end_src
