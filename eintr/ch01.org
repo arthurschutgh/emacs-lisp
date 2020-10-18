@@ -1,2 +1,78 @@
 #+TITLE: Chapter 01
 * Introduction
+  This file contains my notes about chapter 1 of An Introduction to
+  Programming in Emacs Lisp.
+
+  Notes will be in Dutch.
+  
+  It also contains my solutions to the exercises in this chapter.
+* Notes
+** Introduction lists
+   Data en programma code bestaat in Lisp uit lists. Een list wordt
+   omgeven met haakjes ( en ). De elementen van de list worden
+   onderscheiden met een spatie. Een list kan voorafgegaan worden door
+   een apostrof: '. De apostrof wordt wel een single-quote genoemd.
+   #+begin_src emacs-lisp :tangle yes
+     '(rose violet daisy buttercup)
+   #+end_src
+   Bovenstaand voorbeeld bevat een list met de namen van bloemen als
+   elementen. Deze elementen worden ook wel atoms genoemd. Ze zijn niet
+   verder op te delen in kleinere elementen. Deze atoms zijn ook
+   symbols. Atoms die uit cijfers bestaan worden numbers genoemd.
+
+   Nog een paar voorbeelden:
+   #+begin_src emacs-lisp :tangle yes
+     (+ 2 2)
+     '(this list has (a list inside of it))
+   #+end_src
+   =+= en =2= in =(+ 2 2)= worden in Lisp atoms genoemd. Zij kunnen
+   niet verder in onderscheidbare elementen worden verdeeld. Een list
+   in Lisp kan wel opgedeeld worden in z'n elementen. =+= wordt ook wel
+   een symbol genoemd. Getallen zoals 2 heten numbers.
+
+   De tweede regel in bovenstaand voorbeeld bevat een list met de
+   volgende atoms:
+   - this
+   - list
+   - has
+   - (a list inside of it)
+
+   Een list kan binnen een list voorkomen. De binnenste list bevate de
+   volgende atoms:
+   - a
+   - list
+   - inside
+   - of
+   - it
+  
+   Een string is een ander soort atom dan symbols of numbers. Een
+   string is een reeks letters inclusief spaties en leestekens. De
+   qoutes " en " zijn geen onderdeel van de string. Een voorbeeld van
+   een list met een atom van type string als element:
+   #+begin_src emacs-lisp :tangle yes
+     '(this list includes "text between quotation marks.")
+   #+end_src
+   De tekst tussen de quotes is een atom van type string. Het aantal
+   spaties in een list of het aantal newlines is niet van
+   belang. Uiteraard moet je er minimaal 1 hebben om twee atoms van
+   elkaar te onderscheiden.
+
+   Geschreven lisp code zoals in bovenstaand code block wordt wel een
+   symbolic expression genoemd.
+** Running a Program
+   #+begin_src emacs-lisp :tangle yes
+     (+ 2 2)
+   #+end_src
+
+   De + in bovenstaand voorbeeld is de functie voor optellen. Om
+   bovenstaand sexp te evalueren ga je met point rechts van het
+   afsluitende haakje staan. Druk op =C-x C-e= om de sexp te
+   evalueren.
+
+   #+begin_src emacs-lisp :tangle yes
+     '(this is a quoted list)
+   #+end_src
+
+   Als je bovenstaand voorbeeld evalueert met =C-x C-e= dan is het
+   resultaat de list (this is a quoted list).
+* Solutions
