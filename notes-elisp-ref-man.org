@@ -1,0 +1,28 @@
+#+TITLE: Notes on Emacs Lisp Reference Manual
+
+* nil and t
+  true wordt in emacs lisp weergegeven met het symbol t. nil geeft
+  false weer. nil is het symbol nil, de logische waarde false en het
+  is de empty list ().
+
+  Met de functie booleanp kun je testen of je argument t, nil of iets
+  anders is. Het volgende evalueert naar t:
+
+  #+begin_src emacs-lisp :tangle yes
+    (booleanp t)
+    (booleanp nil)
+    (booleanp ())
+  #+end_src
+
+  Het volgende evalueert naar nil:
+  #+begin_src emacs-lisp :tangle yes
+    (booleanp "test")
+    (booleanp 0)
+    (booleanp '("test"))
+    (booleanp 123)
+  #+end_src
+* Evaluation Notation
+  Een lisp expression die je kunt evalueren wordt ook wel een /form/
+  genoemd. Wanneer twee forms identiek zijn, dan wordt dat aangegeven met \equiv.
+* Printing Notation
+** TODO
