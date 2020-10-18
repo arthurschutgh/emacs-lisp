@@ -1,7 +1,11 @@
 
 # Table of Contents
 
+1.  [Introduction](#org58c5f92)
 
 
-+TITLE: Solutions to exercises in An Introduction to Programming in Emacs Lisp
+
+<a id="org58c5f92"></a>
+
+# Introduction
 
