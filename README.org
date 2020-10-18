@@ -4,5 +4,8 @@
   Lisp.
 
   Some of it will be in Dutch
-* [[https://learnxinyminutes.com/docs/elisp/][Learn X in Y minutes where X = elisp]]
-* [[https://www.gnu.org/software/emacs/manual/eintr.html][An introduction to programming in Emacs Lisp]]
+
+  Resources:
+  - [[https://learnxinyminutes.com/docs/elisp/][Learn X in Y minutes where X = elisp]]
+  - [[https://www.gnu.org/software/emacs/manual/eintr.html][An introduction to programming in Emacs Lisp]]
+  - [[https://www.gnu.org/software/emacs/manual/elisp.html][GNU Emacs Lisp Reference Manual]]
