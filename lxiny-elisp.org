@@ -82,3 +82,124 @@
    #+begin_src emacs-lisp :tangle yes
      (format "Hello %s!\n" "visitor")
    #+end_src
+   De string "visitor" wordt geplaatst op de locatie van =%s=.
+
+   We passen de functie hello aan:
+   #+begin_src emacs-lisp :tangle yes
+     (defun hello (name)
+       (insert (format "Hello %s!\n" name)))
+
+     (hello "you")
+   #+end_src
+   Nog een functie met let:
+   #+begin_src emacs-lisp :tangle yes
+     (defun greeting (name)
+       (let ((your-name "Bastien"))
+	 (insert (format "Hello %s!\n\nI am %s."
+			 name
+			 your-name))))
+
+     (greeting "you")
+   #+end_src
+** Reading from the minibuffer
+   Sommige functies zijn interactief. Je kunt bijvoorbeeld invoer
+   opnemen van de gebruiker.
+   #+begin_src emacs-lisp :tangle yes
+     (read-from-minibuffer "Enter your name: ")
+   #+end_src
+
+   We passen de greeting functie aan om invoer op te nemen:
+   #+begin_src emacs-lisp :tangle yes
+     (defun greeting (from-name)
+       (let ((your-name (read-from-minibuffer "Enter your name: ")))
+	     (insert (format "Hello!\n\nI am %s and your are %s."
+			     from-name
+			     your-name))))
+
+     (greeting "Arthur")
+   #+end_src
+   We passen greeting nogmaals aan om het resultaat in een andere
+   buffer te laten zien:
+   #+begin_src emacs-lisp :tangle yes
+     (defun greeting (from-name)
+       (let ((your-name (read-from-minibuffer "Enter your name: ")))
+	 (switch-to-buffer-other-window "*test*")
+	 (erase-buffer)
+	 (insert (format "Hello!\n\nI am %s and your are %s." from-name your-name))
+	 (other-window 1)
+	 ))
+
+     (greeting "test")
+
+   #+end_src
+* Lists and functions
+** Lists
+   Als je een "literal list" wil maken dan moet je hem voorzien van
+   een quote symbool. Doe je dit niet dan probeert de lisp interpreter
+   het eerste element uit te voeren alsof het een functie betrof.
+   #+begin_src emacs-lisp :tangle yes
+     (setq list-of-names '("Sarah" "Chloe" "Mathilde"))
+
+     (car list-of-names)
+
+     (cdr list-of-names)
+   #+end_src
+   De functie car geeft het eerste element van de list als
+   resultaat. De functie cdr geeft als resultaat een list met alle
+   elementen behalve het eerste element.
+
+   Een element voeg je toe met =push=.
+
+   #+begin_src emacs-lisp :tangle yes
+     (push "Stephanie" list-of-names)
+   #+end_src
+
+   Op ieder element van de list kun je een functie uitvoeren met
+   =mapcar=.
+
+   #+begin_src emacs-lisp :tangle yes
+     (mapcar 'hello list-of-names)
+   #+end_src
+
+   We passen greeting weer aan:
+   #+begin_src emacs-lisp :tangle yes
+     (defun greeting ()
+       (switch-to-buffer-other-window "*test*")
+       (erase-buffer)
+       (mapcar 'hello list-of-names)
+       (other-window 1)
+       )
+
+     (greeting)
+   #+end_src
+** Search
+   In Emacs kun je zoeken naar tekst en het vervangen.
+
+   Een voorbeeld:
+   #+begin_src emacs-lisp :tangle yes
+     (defun replace-hello-by-bonjour ()
+       (switch-to-buffer-other-window "*test*")
+       (goto-char (point-min))
+       (while (search-forward "Hello")
+	 (replace-match "Bonjour"))
+       (other-window 1)
+       )
+
+     (replace-hello-by-bonjour)
+   #+end_src
+
+   We passen =replace-hello-by-bonjour= aan, zodat hij geen foutmelding meer geeft.
+
+   #+begin_src emacs-lisp :tangle yes
+     (defun replace-hello-by-bonjour ()
+       (switch-to-buffer-other-window "*test*")
+       (erase-buffer)
+       (mapcar 'hello list-of-names)
+       (goto-char (point-min))
+       (while (search-forward "Hello" nil t)
+	 (replace-match "Bonjour"))
+       (other-window 1)
+       )
+
+     (replace-hello-by-bonjour)
+   #+end_src
